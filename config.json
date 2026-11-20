@@ -1,0 +1,35 @@
+﻿{
+  "app": {
+    "name": "WALEN",
+    "full_name": "KEWARUNG ONLINE AJA",
+    "short_name": "WALEN",
+    "description": "Belanja mudah di warung pilihan Anda.",
+    "language": "id-ID",
+    "version": "1.0.0"
+  },
+  "website": {
+    "base_url": "https://kewarung.online/",
+    "start_url": "/",
+    "scope": "/"
+  },
+  "pwa": {
+    "enabled": true,
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#123B70",
+    "background_color": "#FFFFFF"
+  },
+  "business": {
+    "trial_days": 14,
+    "pro": {
+      "price": 49000,
+      "duration_days": 30
+    },
+    "premium": {
+      "price": 99000,
+      "duration_days": 30
+    },
+    "owner_receives_full_payment": true,
+    "application_commission": 0
+  }
+}
