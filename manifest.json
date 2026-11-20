@@ -1,0 +1,38 @@
+﻿{
+  "id": "/",
+  "name": "WALEN - KEWARUNG ONLINE AJA",
+  "short_name": "WALEN",
+  "description": "Belanja mudah, praktis, dan dekat dengan warung pilihan Anda.",
+  "lang": "id-ID",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#123B70",
+  "categories": [
+    "shopping",
+    "food",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
