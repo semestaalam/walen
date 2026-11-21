@@ -33,15 +33,22 @@ button{cursor:pointer;border:0}
 .dark{background:var(--navy);color:white}
 .outline{border:1px solid var(--line);background:white;color:var(--ink)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-.hero{margin:20px auto 16px;background:linear-gradient(110deg,#123d70,#1769aa);color:white;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;min-height:290px}
+
+/* HERO WARUNG SEMBAKO */
+.hero{
+ margin:20px auto 16px;
+ background:linear-gradient(110deg,#123d70,#1769aa);
+ color:white;border-radius:22px;overflow:hidden;
+ display:grid;grid-template-columns:1.1fr .9fr;min-height:340px;
+ box-shadow:0 10px 30px #123d7020;
+}
 .hero-copy{padding:34px;display:flex;flex-direction:column;justify-content:center}
 .hero h1{font-size:clamp(27px,4vw,43px);margin:0 0 12px;line-height:1.12}
 .hero p{line-height:1.6;color:#e5f1ff;max-width:520px}
-.hero-image{min-height:260px;background:#d8e8f5;position:relative}
+.hero-image{min-height:300px;position:relative;overflow:hidden;background:#e8c18a}
 .hero-image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.hero-placeholder{height:100%;min-height:260px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#173b5d;background:linear-gradient(135deg,#f6d8a5,#e9f4ff)}
-.hero-placeholder .shop-emoji{font-size:100px;display:block}
 .hero-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.shop-illustration{width:100%;height:100%;min-height:300px;display:block}
 .section{margin:20px 0}
 .section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:13px}
 .section-head h2{margin:0;font-size:21px}
@@ -85,6 +92,8 @@ th{background:#f3f7fb}
 .store-avatar.placeholder{display:grid;place-items:center;font-size:40px}
 .footer{margin-top:35px;background:#102f53;color:white;padding:25px 0;text-align:center;font-size:13px}
 .footer a{color:#ffca7d}
+.admin-footer-link{display:inline-block;margin-top:15px;color:#a9bbce!important;font-size:10px;opacity:.48;text-decoration:none;letter-spacing:1px}
+.admin-footer-link:hover{opacity:1;color:white!important}
 .notice{padding:12px;border-radius:10px;background:#fff6df;color:#74500a;font-size:13px;line-height:1.5}
 .chat-launch{position:fixed;right:18px;bottom:18px;z-index:50;background:var(--blue);color:white;border-radius:50px;padding:13px 17px;box-shadow:0 6px 22px #123d7040;font-weight:800}
 .chatbox{position:fixed;z-index:60;right:16px;bottom:78px;width:min(360px,calc(100vw - 28px));height:470px;max-height:70vh;background:white;border-radius:18px;box-shadow:0 12px 45px #102f5350;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
@@ -101,8 +110,30 @@ th{background:#f3f7fb}
 .cart-line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
 .qty{display:flex;gap:7px;align-items:center}
 .qty button{background:#eaf3fc;border-radius:7px;padding:5px 9px}
-hr{border:0;border-top:1px solid var(--line);margin:16px 0}
-@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-image{min-height:190px}.hero-placeholder{min-height:190px}}
+.password-wrap{position:relative}
+.password-wrap .field{padding-right:48px}
+.eye-toggle{
+ position:absolute;right:9px;top:50%;transform:translateY(-50%);
+ width:34px;height:34px;border-radius:8px;background:#edf3f8;
+ color:#34516c;display:grid;place-items:center;font-size:18px;
+}
+.social-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.social-area strong{font-size:12px;color:var(--muted);margin-right:3px}
+.social-link{
+ width:38px;height:38px;border-radius:50%;display:inline-flex;
+ align-items:center;justify-content:center;color:white;text-decoration:none;
+ font-size:17px;font-weight:900;box-shadow:0 3px 9px #0002;
+}
+.social-link.youtube{background:#ff0033}
+.social-link.instagram{background:linear-gradient(45deg,#ffb13d,#e1306c,#833ab4)}
+.social-link.tiktok{background:#111}
+.social-link.facebook{background:#1877f2}
+.map-link{display:inline-block;color:#1769aa;font-size:12px;overflow-wrap:anywhere}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .hero{grid-template-columns:1fr}
+ .hero-image{min-height:240px}
+}
 @media(max-width:600px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
  .product-photo{height:118px}.product-info{padding:10px}
@@ -132,15 +163,96 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
     <h1>Selamat Datang di KEWARUNG ONLINE AJA</h1>
     <p>Belanja kebutuhan warung dan rumah tangga dengan mudah. Temukan sembako, minyak goreng, mi instan, minuman, dan kebutuhan harian lainnya.</p>
     <div class="hero-buttons">
-     <button class="btn orange" onclick="showShop()">Mulai Belanja</button>
+     <button class="btn orange" onclick="showShop()">MULAI BELANJA</button>
      <button class="btn secondary" onclick="showRegister()">Daftarkan Warung</button>
     </div>
    </div>
+
+   <!-- Ilustrasi etalase warung sembako, bukan rumah atau placeholder emoji -->
    <div class="hero-image" id="heroImage">
-    <div class="hero-placeholder"><div><span class="shop-emoji">🏪</span><b>WARUNG SEMBAKO INDONESIA</b><br><small>Beras · Minyak · Telur · Mi Instan · Kebutuhan Harian</small></div></div>
+    <svg class="shop-illustration" viewBox="0 0 760 520" role="img" aria-label="Ilustrasi warung sembako Indonesia dengan rak beras, minyak goreng, mi instan dan minuman" xmlns="http://www.w3.org/2000/svg">
+     <defs>
+      <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#fff0c9"/><stop offset="1" stop-color="#e9bd7d"/></linearGradient>
+      <linearGradient id="awning" x2="0" y2="1"><stop stop-color="#e84435"/><stop offset="1" stop-color="#a91f24"/></linearGradient>
+      <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#d59a55"/><stop offset="1" stop-color="#87532d"/></linearGradient>
+     </defs>
+     <rect width="760" height="520" fill="#c5e3f3"/>
+     <circle cx="650" cy="70" r="38" fill="#ffe49a"/>
+     <rect y="390" width="760" height="130" fill="url(#floor)"/>
+     <rect x="55" y="105" width="650" height="300" rx="9" fill="url(#wall)" stroke="#71452c" stroke-width="8"/>
+     <rect x="35" y="78" width="690" height="60" rx="5" fill="url(#awning)" stroke="#743326" stroke-width="5"/>
+     <path d="M35 78h690v60H35z" fill="none" stroke="#fff1d6" stroke-width="3"/>
+     <path d="M125 78v60m100-60v60m100-60v60m100-60v60m100-60v60m100-60v60" stroke="#fff0d5" stroke-width="8"/>
+     <rect x="165" y="25" width="430" height="65" rx="10" fill="#123d70" stroke="#fff" stroke-width="5"/>
+     <text x="380" y="68" text-anchor="middle" font-family="Arial" font-size="34" font-weight="900" fill="#fff">WARUNG SEMBAKO</text>
+     <!-- Rak kiri -->
+     <rect x="78" y="160" width="245" height="220" rx="5" fill="#a66b36" stroke="#704321" stroke-width="7"/>
+     <path d="M78 232h245M78 305h245" stroke="#704321" stroke-width="8"/>
+     <!-- Beras -->
+     <path d="M91 176q35-18 67 0l-4 48h-59z" fill="#fff5d8" stroke="#c7a878" stroke-width="3"/>
+     <path d="M170 176q35-18 67 0l-4 48h-59z" fill="#fff5d8" stroke="#c7a878" stroke-width="3"/>
+     <path d="M250 176q28-16 58 0l-4 48h-50z" fill="#f6e7c5" stroke="#c7a878" stroke-width="3"/>
+     <text x="205" y="207" font-family="Arial" font-size="14" font-weight="bold" fill="#74512b" text-anchor="middle">BERAS</text>
+     <!-- Minyak -->
+     <g stroke="#9b641f" stroke-width="2">
+      <rect x="96" y="245" width="32" height="48" rx="7" fill="#f6b52e"/>
+      <rect x="137" y="245" width="32" height="48" rx="7" fill="#ffd65a"/>
+      <rect x="178" y="245" width="32" height="48" rx="7" fill="#f6b52e"/>
+      <rect x="219" y="245" width="32" height="48" rx="7" fill="#ffd65a"/>
+      <rect x="260" y="245" width="32" height="48" rx="7" fill="#f6b52e"/>
+     </g>
+     <g fill="#fff" font-size="10" font-family="Arial" font-weight="bold" text-anchor="middle">
+      <text x="112" y="273">MINYAK</text><text x="153" y="273">MINYAK</text><text x="194" y="273">MINYAK</text><text x="235" y="273">MINYAK</text><text x="276" y="273">MINYAK</text>
+     </g>
+     <!-- Mi instan -->
+     <g stroke="#a32d1f" stroke-width="2">
+      <rect x="91" y="317" width="47" height="49" rx="4" fill="#f4c72e"/>
+      <rect x="143" y="317" width="47" height="49" rx="4" fill="#e94a35"/>
+      <rect x="195" y="317" width="47" height="49" rx="4" fill="#f6e4b5"/>
+      <rect x="247" y="317" width="47" height="49" rx="4" fill="#e94a35"/>
+     </g>
+     <g fill="#fff" font-size="11" font-weight="bold" text-anchor="middle"><text x="114" y="347">MIE</text><text x="166" y="347">MIE</text><text x="218" y="347">MIE</text><text x="270" y="347">MIE</text></g>
+     <!-- Rak kanan -->
+     <rect x="440" y="160" width="235" height="220" rx="5" fill="#a66b36" stroke="#704321" stroke-width="7"/>
+     <path d="M440 232h235M440 305h235" stroke="#704321" stroke-width="8"/>
+     <!-- Minuman -->
+     <g stroke="#315a87" stroke-width="2">
+      <rect x="458" y="176" width="30" height="49" rx="7" fill="#66c8ef"/>
+      <rect x="495" y="176" width="30" height="49" rx="7" fill="#77d7c5"/>
+      <rect x="532" y="176" width="30" height="49" rx="7" fill="#75b9ec"/>
+      <rect x="569" y="176" width="30" height="49" rx="7" fill="#f6d36c"/>
+      <rect x="606" y="176" width="30" height="49" rx="7" fill="#e98c53"/>
+     </g>
+     <!-- Kaleng dan kebutuhan -->
+     <g stroke="#9b672e" stroke-width="2">
+      <rect x="457" y="246" width="37" height="49" rx="5" fill="#d9e7f1"/>
+      <rect x="501" y="246" width="37" height="49" rx="5" fill="#efcf62"/>
+      <rect x="545" y="246" width="37" height="49" rx="5" fill="#e6a1a1"/>
+      <rect x="589" y="246" width="37" height="49" rx="5" fill="#b8d99b"/>
+     </g>
+     <g fill="#fff" font-size="10" font-weight="bold" text-anchor="middle"><text x="475" y="274">SUSU</text><text x="519" y="274">GULA</text><text x="563" y="274">TEH</text><text x="607" y="274">KOPI</text></g>
+     <!-- Telur -->
+     <g fill="#fff0d0" stroke="#b99a6b" stroke-width="2">
+      <ellipse cx="475" cy="337" rx="14" ry="20"/><ellipse cx="510" cy="337" rx="14" ry="20"/>
+      <ellipse cx="545" cy="337" rx="14" ry="20"/><ellipse cx="580" cy="337" rx="14" ry="20"/>
+      <ellipse cx="615" cy="337" rx="14" ry="20"/>
+     </g>
+     <!-- Meja kasir -->
+     <rect x="315" y="330" width="125" height="60" rx="5" fill="#c27b3f" stroke="#704321" stroke-width="5"/>
+     <rect x="329" y="305" width="95" height="30" rx="5" fill="#234c70"/>
+     <text x="376" y="326" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">KASIR</text>
+     <!-- Kanopi depan dan dekorasi -->
+     <path d="M55 405h650" stroke="#704321" stroke-width="10"/>
+     <rect x="20" y="420" width="720" height="8" rx="4" fill="#f5d49c"/>
+     <text x="380" y="478" text-anchor="middle" font-family="Arial" font-size="25" font-weight="900" fill="#fff5df">LENGKAP • RAMAH • SIAP MELAYANI</text>
+    </svg>
    </div>
   </div>
+
   <div class="notice">Belum paham cara menggunakan aplikasi? Tanyakan saja kepada WALEN, pelayan digital yang siap membantu dengan ramah.</div>
+
+  <div id="homeSocialLinks" class="social-area"></div>
+
   <section class="section">
    <div class="section-head"><h2>Kenapa belanja di sini?</h2></div>
    <div class="grid">
@@ -163,6 +275,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
     </div>
     <button class="btn secondary" onclick="showHome()">Beranda</button>
    </div>
+   <div id="shopSocialLinks" class="social-area"></div>
    <label>Pilih warung</label>
    <select class="field" id="storePicker" onchange="selectStore(this.value)"></select>
    <div class="toolbar">
@@ -190,7 +303,13 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
      <div><label>Nomor WhatsApp</label><input class="field" name="phone" required placeholder="08xxxxxxxxxx"></div>
      <div><label>Email (opsional)</label><input class="field" type="email" name="email"></div>
      <div><label>Nama pengguna untuk login</label><input class="field" name="username" required minlength="4"></div>
-     <div><label>Kata sandi</label><input class="field" type="password" name="password" required minlength="6"></div>
+     <div>
+      <label>Kata sandi</label>
+      <div class="password-wrap">
+       <input class="field" id="registerPassword" type="password" name="password" required minlength="6">
+       <button class="eye-toggle" type="button" onclick="togglePassword('registerPassword',this)" aria-label="Lihat password">◉</button>
+      </div>
+     </div>
      <div class="full"><label>Alamat warung</label><textarea class="field" name="address" rows="2" required></textarea></div>
     </div>
     <div class="notice" style="margin:14px 0">Pendaftaran versi uji coba ini disimpan pada browser perangkat yang digunakan. Aktivasi dan sinkronisasi online akan disiapkan saat integrasi backend.</div>
@@ -211,6 +330,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
     <button class="tab" onclick="ownerTab('orders',this)">Pesanan</button>
     <button class="tab" onclick="ownerTab('service',this)">Layanan</button>
    </div>
+
    <div id="ownerProfile" class="owner-tab">
     <h3>Profil Warung</h3>
     <form id="profileForm">
@@ -223,12 +343,20 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
        <img id="storePhotoPreview" class="preview hidden" alt="Pratinjau foto warung">
       </div>
       <div class="full">
+       <h3 style="margin:18px 0 5px">Media Sosial Warung</h3>
+       <p class="muted">Isi link akun media sosial warung. Ikon hanya akan muncul jika link diisi.</p>
+       <label>Link YouTube</label><input class="field" type="url" id="socialYoutube" placeholder="https://youtube.com/@namaakun">
+       <label>Link Instagram</label><input class="field" type="url" id="socialInstagram" placeholder="https://instagram.com/namaakun">
+       <label>Link TikTok</label><input class="field" type="url" id="socialTiktok" placeholder="https://tiktok.com/@namaakun">
+       <label>Link Facebook</label><input class="field" type="url" id="socialFacebook" placeholder="https://facebook.com/namaakun">
+      </div>
+      <div class="full">
        <label>Nama / keterangan QRIS</label><input class="field" id="qrisLabel" placeholder="Contoh: QRIS Warung Berkah">
        <label>Upload gambar QRIS</label><input class="field" type="file" id="qrisInput" accept="image/*">
        <img id="qrisPreview" class="preview hidden" alt="Pratinjau QRIS">
       </div>
      </div>
-     <button class="btn primary" type="submit">Simpan Profil dan QRIS</button>
+     <button class="btn primary" type="submit">Simpan Profil, Media Sosial dan QRIS</button>
     </form>
    </div>
 
@@ -265,7 +393,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
      <div class="between"><b>Paket saat ini</b><span class="pill" id="ownerPackage">Trial</span></div>
      <p id="ownerExpiry" class="muted"></p>
      <p class="muted">Trial 14 hari · Pro Rp49.000 / 30 hari · Premium Rp99.000 / 30 hari.</p>
-     <p class="muted">Pengajuan paket pada versi ini masih berupa informasi lokal. Aktivasi pembayaran akan dikelola melalui Admin setelah backend dihubungkan.</p>
+     <p class="muted">Pengajuan paket pada versi ini masih berupa informasi lokal. Aktivasi pembayaran akan dikelola Admin setelah backend dihubungkan.</p>
     </div>
    </div>
   </div>
@@ -274,7 +402,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
  <section id="adminPage" class="hidden">
   <div class="panel">
    <div class="between"><div><h2>Dashboard Admin WALEN</h2><div class="muted">Pengelolaan warung terdaftar</div></div><button class="btn danger" onclick="logout()">Keluar</button></div>
-   <div class="notice">Akun Admin versi awal: username <b>admin</b>, password <b>WalenAdmin2026!</b>. Ganti kredensial ini sebelum aplikasi digunakan secara publik. Login ini belum diamankan oleh server.</div>
+   <div class="notice">Dashboard Admin versi ini masih menggunakan penyimpanan browser lokal. Login dan data perlu diamankan melalui backend sebelum aplikasi dipublikasikan.</div>
    <div class="tabs">
     <button class="tab active" onclick="adminTab('stores',this)">Data Warung</button>
     <button class="tab" onclick="adminTab('settings',this)">Pengaturan</button>
@@ -286,7 +414,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
     <h3>Pengaturan halaman pembuka</h3>
     <label>Judul halaman</label><input class="field" id="heroTitleInput" value="Selamat Datang di KEWARUNG ONLINE AJA">
     <label>Deskripsi</label><textarea class="field" id="heroTextInput" rows="3"></textarea>
-    <label>Foto warung sembako halaman pembuka</label><input class="field" type="file" id="heroPhotoInput" accept="image/*">
+    <label>Foto warung sembako halaman pembuka (opsional, mengganti ilustrasi)</label><input class="field" type="file" id="heroPhotoInput" accept="image/*">
     <img id="heroPhotoPreview" class="preview hidden" alt="Pratinjau halaman pembuka">
     <button class="btn primary" onclick="saveHeroSettings()">Simpan Pengaturan</button>
    </div>
@@ -299,6 +427,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
   <b>KEWARUNG ONLINE AJA · WALEN</b>
   <p>Belanja mudah, warung semakin dekat.</p>
   <div>@Developer : by SEMESTAALAM under Indonesian SSD Foundation</div>
+  <a href="#" class="admin-footer-link" onclick="openLogin();return false">ADMIN</a>
  </div>
 </footer>
 
@@ -316,7 +445,11 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
   <div class="between"><h2>Masuk WALEN</h2><button class="btn secondary" onclick="closeLogin()">Tutup</button></div>
   <form id="loginForm">
    <label>Nama pengguna</label><input class="field" id="loginUsername" required>
-   <label>Kata sandi</label><input class="field" id="loginPassword" type="password" required>
+   <label>Kata sandi</label>
+   <div class="password-wrap">
+    <input class="field" id="loginPassword" type="password" required>
+    <button class="eye-toggle" type="button" onclick="togglePassword('loginPassword',this)" aria-label="Lihat password">◉</button>
+   </div>
    <button class="btn primary" style="width:100%;margin-top:16px">Masuk</button>
   </form>
   <p class="muted">Pemilik warung yang belum memiliki akun dapat memilih Daftar Warung.</p>
@@ -333,6 +466,9 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
    <label>Nama pembeli</label><input class="field" id="buyerName" required>
    <label>Nomor WhatsApp</label><input class="field" id="buyerPhone" required>
    <label>Alamat pengantaran</label><textarea class="field" id="buyerAddress" rows="2" required></textarea>
+   <label>Link Google Maps lokasi pengantaran</label>
+   <input class="field" id="buyerMapLink" type="url" placeholder="Tempel link lokasi Google Maps di sini">
+   <small class="help">Buka Google Maps, pilih lokasi tujuan, lalu salin dan tempel link berbagi lokasi.</small>
    <label>Catatan pesanan (opsional)</label><textarea class="field" id="buyerNote" rows="2"></textarea>
    <button class="btn green" style="width:100%;margin-top:14px">Kirim Pesanan via WhatsApp</button>
   </form>
@@ -397,41 +533,100 @@ const seedProducts=[
 
 function defaultDB(){
  return {
-  stores:[],
-  orders:[],
+  stores:[],orders:[],
   heroTitle:"Selamat Datang di KEWARUNG ONLINE AJA",
   heroText:"Belanja kebutuhan warung dan rumah tangga dengan mudah. Temukan sembako, minyak goreng, mi instan, minuman, dan kebutuhan harian lainnya.",
   heroImage:""
  };
 }
 function loadDB(){
- try{return Object.assign(defaultDB(),JSON.parse(localStorage.getItem(DBKEY)||"{}"))}
- catch(e){return defaultDB()}
+ try{
+  const saved=JSON.parse(localStorage.getItem(DBKEY)||"{}");
+  return Object.assign(defaultDB(),saved);
+ }catch(e){return defaultDB()}
 }
 let db=loadDB(),currentUser=null,selectedStoreId="",cart={},pendingImages={};
+
 function saveDB(){
  try{localStorage.setItem(DBKEY,JSON.stringify(db))}
  catch(e){alert("Penyimpanan browser penuh. Coba gunakan gambar yang lebih kecil.");}
 }
 function uid(){return "w"+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function money(n){return "Rp"+Number(n||0).toLocaleString("id-ID")}
-function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function escapeHTML(s){
+ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))
+}
 function activeStore(){return db.stores.find(s=>s.id===selectedStoreId)||null}
 function ownerStore(){return currentUser?.role==="owner"?db.stores.find(s=>s.id===currentUser.storeId):null}
+
+function togglePassword(id,button){
+ const input=document.getElementById(id);
+ if(!input)return;
+ const showing=input.type==="password";
+ input.type=showing?"text":"password";
+ button.textContent=showing?"◎":"◉";
+ button.setAttribute("aria-label",showing?"Sembunyikan password":"Lihat password");
+}
+
 function showOnly(id){
- ["homePage","shopPage","registerPage","ownerPage","adminPage"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));
+ ["homePage","shopPage","registerPage","ownerPage","adminPage"].forEach(x=>{
+  document.getElementById(x).classList.toggle("hidden",x!==id);
+ });
  window.scrollTo(0,0);
 }
-function showHome(){showOnly("homePage")}
+function showHome(){
+ showOnly("homePage");
+ renderHomeSocial();
+}
 function showShop(){
- showOnly("shopPage");fillStorePicker();
+ showOnly("shopPage");
+ fillStorePicker();
  if(!selectedStoreId&&db.stores.length)selectStore(db.stores[0].id);
  renderProducts();
 }
 function showRegister(){showOnly("registerPage")}
 function openLogin(){document.getElementById("loginModal").classList.remove("hidden")}
 function closeLogin(){document.getElementById("loginModal").classList.add("hidden")}
-function logout(){currentUser=null;showHome();alert("Anda sudah keluar dari akun.");}
+function logout(){
+ currentUser=null;showHome();alert("Anda sudah keluar dari akun.");
+}
+
+function socialHTML(store){
+ if(!store)return "";
+ const links=store.social||{};
+ const items=[
+  ["youtube",links.youtube,"YouTube","▶"],
+  ["instagram",links.instagram,"Instagram","◎"],
+  ["tiktok",links.tiktok,"TikTok","♪"],
+  ["facebook",links.facebook,"Facebook","f"]
+ ];
+ const valid=items.filter(item=>isValidSocialURL(item[1]));
+ if(!valid.length)return "";
+ return '<strong>Ikuti warung ini:</strong>'+valid.map(item=>
+  `<a class="social-link ${item[0]}" href="${escapeHTML(item[1])}" target="_blank" rel="noopener noreferrer" title="${item[2]}" aria-label="${item[2]}">${item[3]}</a>`
+ ).join("");
+}
+function isValidSocialURL(value){
+ if(!value)return false;
+ try{
+  const u=new URL(value);
+  return u.protocol==="https:"||u.protocol==="http:";
+ }catch(e){return false}
+}
+function renderHomeSocial(){
+ const el=document.getElementById("homeSocialLinks");
+ if(!el)return;
+ const s=activeStore()||db.stores.find(x=>x.status!=="OFF");
+ el.innerHTML=s?socialHTML(s):"";
+ el.classList.toggle("hidden",!el.innerHTML);
+}
+function renderShopSocial(store){
+ const el=document.getElementById("shopSocialLinks");
+ if(!el)return;
+ el.innerHTML=socialHTML(store);
+ el.classList.toggle("hidden",!el.innerHTML);
+}
+
 function fillStorePicker(){
  const el=document.getElementById("storePicker");
  const active=db.stores.filter(s=>s.status!=="OFF");
@@ -450,13 +645,22 @@ function selectStore(id){
  else{av.className="store-avatar placeholder";av.removeAttribute("src");av.textContent="🏪"}
  const q=document.getElementById("shopQrisArea");
  q.classList.toggle("hidden",!s.qris);
- if(s.qris){document.getElementById("shopQris").src=s.qris;document.getElementById("shopQrisLabel").textContent=s.qrisLabel||"QRIS Warung"}
+ if(s.qris){
+  document.getElementById("shopQris").src=s.qris;
+  document.getElementById("shopQrisLabel").textContent=s.qrisLabel||"QRIS Warung";
+ }
  document.getElementById("cartCount").textContent="0";
+ renderShopSocial(s);
+ renderHomeSocial();
  renderProducts();
 }
+
 function renderProducts(){
  const s=activeStore(),grid=document.getElementById("productGrid");
- if(!s){grid.innerHTML='<div class="empty card">Belum ada warung aktif. Silakan daftar atau masuk sebagai pemilik warung.</div>';return}
+ if(!s){
+  grid.innerHTML='<div class="empty card">Belum ada warung aktif. Silakan daftar atau masuk sebagai pemilik warung.</div>';
+  return;
+ }
  const q=(document.getElementById("productSearch")?.value||"").toLowerCase();
  const cat=document.getElementById("categoryFilter")?.value||"";
  const products=(s.products||[]).filter(p=>(!q||p.name.toLowerCase().includes(q))&&(!cat||p.category===cat));
@@ -498,6 +702,7 @@ function changeQty(id,delta){
  if(n<=0)delete cart[id];else if(n<=p.stock)cart[id]=n;else alert("Stok tidak mencukupi.");
  renderCart();renderProducts();
 }
+
 function imageToData(file,callback){
  if(!file)return;
  if(!file.type.startsWith("image/")){alert("Pilih file gambar.");return}
@@ -506,23 +711,29 @@ function imageToData(file,callback){
  reader.onerror=()=>alert("Gagal membaca gambar.");
  reader.readAsDataURL(file);
 }
+
 document.getElementById("registerForm").addEventListener("submit",e=>{
- e.preventDefault();const f=new FormData(e.target);
+ e.preventDefault();
+ const f=new FormData(e.target);
  const username=String(f.get("username")).trim().toLowerCase();
- if(username==="admin"||db.stores.some(s=>s.username===username)){alert("Nama pengguna sudah digunakan.");return}
+ if(username==="admin"||db.stores.some(s=>s.username===username)){
+  alert("Nama pengguna sudah digunakan.");return;
+ }
  const store={
   id:uid(),owner:String(f.get("owner")).trim(),name:String(f.get("store")).trim(),
   phone:String(f.get("phone")).trim(),email:String(f.get("email")||""),
   username,password:String(f.get("password")),address:String(f.get("address")).trim(),
   status:"ON",package:"Trial",createdAt:new Date().toISOString(),
   expiresAt:new Date(Date.now()+14*86400000).toISOString(),
-  products:seedProducts.map((p,i)=>({id:uid(),name:p[0],category:p[1],price:p[2],emoji:p[3],stock:20,image:""})),
-  photo:"",qris:"",qrisLabel:""
+  products:seedProducts.map(p=>({id:uid(),name:p[0],category:p[1],price:p[2],emoji:p[3],stock:20,image:""})),
+  photo:"",qris:"",qrisLabel:"",
+  social:{youtube:"",instagram:"",tiktok:"",facebook:""}
  };
  db.stores.push(store);saveDB();e.target.reset();
  alert("Pendaftaran berhasil. Silakan masuk menggunakan akun pemilik warung.");
  showHome();openLogin();
 });
+
 document.getElementById("loginForm").addEventListener("submit",e=>{
  e.preventDefault();
  const u=document.getElementById("loginUsername").value.trim().toLowerCase();
@@ -535,13 +746,19 @@ document.getElementById("loginForm").addEventListener("submit",e=>{
  if(s.status==="OFF"){alert("Akun warung sedang dinonaktifkan Admin.");return}
  currentUser={role:"owner",storeId:s.id};closeLogin();showOwner();
 });
+
 function showOwner(){
  const s=ownerStore();if(!s){logout();return}
- showOnly("ownerPage");document.getElementById("ownerWelcome").textContent=s.name+" · "+s.owner;
+ showOnly("ownerPage");
+ document.getElementById("ownerWelcome").textContent=s.name+" · "+s.owner;
  document.getElementById("editStoreName").value=s.name;
  document.getElementById("editStorePhone").value=s.phone;
  document.getElementById("editStoreAddress").value=s.address||"";
  document.getElementById("qrisLabel").value=s.qrisLabel||"";
+ document.getElementById("socialYoutube").value=s.social?.youtube||"";
+ document.getElementById("socialInstagram").value=s.social?.instagram||"";
+ document.getElementById("socialTiktok").value=s.social?.tiktok||"";
+ document.getElementById("socialFacebook").value=s.social?.facebook||"";
  setPreview("storePhotoPreview",s.photo);setPreview("qrisPreview",s.qris);
  document.getElementById("ownerPackage").textContent=s.package;
  document.getElementById("ownerExpiry").textContent="Masa aktif sampai: "+new Date(s.expiresAt).toLocaleDateString("id-ID");
@@ -550,42 +767,65 @@ function showOwner(){
 function ownerTab(which,btn){
  document.querySelectorAll(".owner-tab").forEach(x=>x.classList.add("hidden"));
  document.getElementById("owner"+which[0].toUpperCase()+which.slice(1)).classList.remove("hidden");
- document.querySelectorAll("#ownerPage .tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+ document.querySelectorAll("#ownerPage .tab").forEach(x=>x.classList.remove("active"));
+ btn.classList.add("active");
 }
 function setPreview(id,src){
  const el=document.getElementById(id);
- if(src){el.src=src;el.classList.remove("hidden")}else{el.removeAttribute("src");el.classList.add("hidden")}
+ if(src){el.src=src;el.classList.remove("hidden")}
+ else{el.removeAttribute("src");el.classList.add("hidden")}
 }
-document.getElementById("storePhotoInput").addEventListener("change",e=>imageToData(e.target.files[0],src=>{pendingImages.store=src;setPreview("storePhotoPreview",src)}));
-document.getElementById("qrisInput").addEventListener("change",e=>imageToData(e.target.files[0],src=>{pendingImages.qris=src;setPreview("qrisPreview",src)}));
+document.getElementById("storePhotoInput").addEventListener("change",e=>
+ imageToData(e.target.files[0],src=>{pendingImages.store=src;setPreview("storePhotoPreview",src)})
+);
+document.getElementById("qrisInput").addEventListener("change",e=>
+ imageToData(e.target.files[0],src=>{pendingImages.qris=src;setPreview("qrisPreview",src)})
+);
+
 document.getElementById("profileForm").addEventListener("submit",e=>{
  e.preventDefault();const s=ownerStore();if(!s)return;
  s.name=document.getElementById("editStoreName").value.trim();
  s.phone=document.getElementById("editStorePhone").value.trim();
  s.address=document.getElementById("editStoreAddress").value.trim();
  s.qrisLabel=document.getElementById("qrisLabel").value.trim();
+ s.social={
+  youtube:document.getElementById("socialYoutube").value.trim(),
+  instagram:document.getElementById("socialInstagram").value.trim(),
+  tiktok:document.getElementById("socialTiktok").value.trim(),
+  facebook:document.getElementById("socialFacebook").value.trim()
+ };
  if(pendingImages.store)s.photo=pendingImages.store;
  if(pendingImages.qris)s.qris=pendingImages.qris;
- pendingImages={};saveDB();alert("Profil warung berhasil disimpan.");showOwner();
+ pendingImages={};saveDB();
+ alert("Profil warung, media sosial dan QRIS berhasil disimpan.");
+ showOwner();
 });
+
 function fillCategorySelect(){
  document.getElementById("newProductCategory").innerHTML=categories.map(c=>`<option>${escapeHTML(c)}</option>`).join("");
  document.getElementById("categoryFilter").innerHTML='<option value="">Semua kategori</option>'+categories.map(c=>`<option>${escapeHTML(c)}</option>`).join("");
 }
 fillCategorySelect();
-document.getElementById("newProductImage").addEventListener("change",e=>imageToData(e.target.files[0],src=>{pendingImages.product=src;setPreview("newProductPreview",src)}));
+
+document.getElementById("newProductImage").addEventListener("change",e=>
+ imageToData(e.target.files[0],src=>{pendingImages.product=src;setPreview("newProductPreview",src)})
+);
 function resetProductForm(){
- document.getElementById("productForm").reset();document.getElementById("productEditId").value="";
- document.getElementById("newProductStock").value=10;pendingImages.product="";
+ document.getElementById("productForm").reset();
+ document.getElementById("productEditId").value="";
+ document.getElementById("newProductStock").value=10;
+ pendingImages.product="";
  setPreview("newProductPreview","");
 }
 document.getElementById("productForm").addEventListener("submit",e=>{
  e.preventDefault();const s=ownerStore();if(!s)return;
  const id=document.getElementById("productEditId").value;
- const data={name:document.getElementById("newProductName").value.trim(),
- category:document.getElementById("newProductCategory").value,
- price:Number(document.getElementById("newProductPrice").value),
- stock:Number(document.getElementById("newProductStock").value)};
+ const data={
+  name:document.getElementById("newProductName").value.trim(),
+  category:document.getElementById("newProductCategory").value,
+  price:Number(document.getElementById("newProductPrice").value),
+  stock:Number(document.getElementById("newProductStock").value)
+ };
  if(id){
   const p=s.products.find(x=>x.id===id);if(!p)return;
   Object.assign(p,data);if(pendingImages.product)p.image=pendingImages.product;
@@ -614,38 +854,64 @@ function editProduct(id){
 }
 function deleteProduct(id){
  if(!confirm("Hapus produk ini?"))return;
- const s=ownerStore();s.products=s.products.filter(p=>p.id!==id);saveDB();renderOwnerProducts();
+ const s=ownerStore();s.products=s.products.filter(p=>p.id!==id);
+ saveDB();renderOwnerProducts();
 }
+
 function renderOwnerOrders(){
  const s=ownerStore(),orders=db.orders.filter(o=>o.storeId===s.id);
  document.getElementById("ownerOrderList").innerHTML=orders.length?orders.map(o=>`
- <div class="card" style="margin:10px 0"><div class="between"><b>${escapeHTML(o.buyer)}</b><span class="pill">${escapeHTML(o.status)}</span></div>
- <div class="muted">${new Date(o.createdAt).toLocaleString("id-ID")}</div><p>${o.items.map(i=>escapeHTML(i.name)+" × "+i.qty).join("<br>")}</p>
- <b>${money(o.total)}</b><p class="muted">${escapeHTML(o.address)}</p>
- <button class="btn green" onclick="setOrderStatus('${o.id}','Diproses')">Proses</button>
- <button class="btn secondary" onclick="setOrderStatus('${o.id}','Selesai')">Selesai</button></div>`).join(""):'<div class="empty">Belum ada pesanan.</div>';
+ <div class="card" style="margin:10px 0">
+  <div class="between"><b>${escapeHTML(o.buyer)}</b><span class="pill">${escapeHTML(o.status)}</span></div>
+  <div class="muted">${new Date(o.createdAt).toLocaleString("id-ID")}</div>
+  <p>${o.items.map(i=>escapeHTML(i.name)+" × "+i.qty).join("<br>")}</p>
+  <b>${money(o.total)}</b>
+  <p class="muted">${escapeHTML(o.address)}</p>
+  ${o.mapLink?`<p><a class="map-link" href="${escapeHTML(o.mapLink)}" target="_blank" rel="noopener noreferrer">📍 Buka lokasi pembeli di Google Maps</a></p>`:""}
+  <p class="muted">WhatsApp pembeli: ${escapeHTML(o.phone||"-")}</p>
+  <button class="btn green" onclick="setOrderStatus('${o.id}','Diproses')">Proses</button>
+  <button class="btn secondary" onclick="setOrderStatus('${o.id}','Selesai')">Selesai</button>
+ </div>`).join(""):'<div class="empty">Belum ada pesanan.</div>';
 }
 function setOrderStatus(id,status){
  const o=db.orders.find(x=>x.id===id&&x.storeId===currentUser.storeId);if(!o)return;
  o.status=status;saveDB();renderOwnerOrders();
 }
+
 document.getElementById("checkoutForm").addEventListener("submit",e=>{
  e.preventDefault();const s=activeStore();if(!s)return;
- const items=Object.entries(cart).map(([id,qty])=>{const p=s.products.find(x=>x.id===id);return p?{id:p.id,name:p.name,qty,price:p.price}:null}).filter(Boolean);
+ const items=Object.entries(cart).map(([id,qty])=>{
+  const p=s.products.find(x=>x.id===id);
+  return p?{id:p.id,name:p.name,qty,price:p.price}:null;
+ }).filter(Boolean);
  if(!items.length){alert("Keranjang masih kosong.");return}
  const total=items.reduce((n,x)=>n+x.qty*x.price,0);
- const order={id:uid(),storeId:s.id,buyer:document.getElementById("buyerName").value.trim(),
- phone:document.getElementById("buyerPhone").value.trim(),address:document.getElementById("buyerAddress").value.trim(),
- note:document.getElementById("buyerNote").value.trim(),items,total,status:"Baru",createdAt:new Date().toISOString()};
+ const order={
+  id:uid(),storeId:s.id,
+  buyer:document.getElementById("buyerName").value.trim(),
+  phone:document.getElementById("buyerPhone").value.trim(),
+  address:document.getElementById("buyerAddress").value.trim(),
+  mapLink:document.getElementById("buyerMapLink").value.trim(),
+  note:document.getElementById("buyerNote").value.trim(),
+  items,total,status:"Baru",createdAt:new Date().toISOString()
+ };
  db.orders.push(order);
- items.forEach(i=>{const p=s.products.find(x=>x.id===i.id);if(p)p.stock=Math.max(0,p.stock-i.qty)});
+ items.forEach(i=>{
+  const p=s.products.find(x=>x.id===i.id);
+  if(p)p.stock=Math.max(0,p.stock-i.qty);
+ });
  saveDB();
  const lines=items.map(i=>`- ${i.name} x${i.qty} = ${money(i.price*i.qty)}`).join("\n");
- const msg=`Halo ${s.name}, saya ingin memesan:\n${lines}\nTotal: ${money(total)}\nNama: ${order.buyer}\nWA: ${order.phone}\nAlamat: ${order.address}\nCatatan: ${order.note}`;
+ const msg=`Halo ${s.name}, saya ingin memesan:\n${lines}\nTotal: ${money(total)}\nNama: ${order.buyer}\nWA: ${order.phone}\nAlamat: ${order.address}\nLink Google Maps: ${order.mapLink||"Tidak diisi"}\nCatatan: ${order.note}`;
  closeCart();cart={};renderProducts();
- if(s.phone){const phone=s.phone.replace(/\D/g,"").replace(/^0/,"62");window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg),"_blank")}
- else alert("Pesanan tersimpan. Nomor WhatsApp warung belum diatur.");
+ if(s.phone){
+  const phone=s.phone.replace(/\D/g,"").replace(/^0/,"62");
+  window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg),"_blank");
+ }else{
+  alert("Pesanan tersimpan. Nomor WhatsApp warung belum diatur.");
+ }
 });
+
 function renderAdmin(){
  document.getElementById("adminStoreRows").innerHTML=db.stores.length?db.stores.map(s=>`<tr>
  <td><b>${escapeHTML(s.name)}</b><div class="muted">${escapeHTML(s.username)}</div></td>
@@ -660,7 +926,8 @@ function renderAdmin(){
 function adminTab(which,btn){
  document.getElementById("adminStores").classList.toggle("hidden",which!=="stores");
  document.getElementById("adminSettings").classList.toggle("hidden",which!=="settings");
- document.querySelectorAll("#adminPage .tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+ document.querySelectorAll("#adminPage .tab").forEach(x=>x.classList.remove("active"));
+ btn.classList.add("active");
 }
 function toggleStore(id){
  const s=db.stores.find(x=>x.id===id);if(!s)return;
@@ -668,22 +935,31 @@ function toggleStore(id){
 }
 function removeStore(id){
  if(!confirm("Hapus data warung ini beserta data produk dan pesanan lokalnya?"))return;
- db.stores=db.stores.filter(s=>s.id!==id);db.orders=db.orders.filter(o=>o.storeId!==id);
+ db.stores=db.stores.filter(s=>s.id!==id);
+ db.orders=db.orders.filter(o=>o.storeId!==id);
  if(selectedStoreId===id)selectedStoreId="";
- saveDB();renderAdmin();
+ saveDB();renderAdmin();renderHomeSocial();
 }
-document.getElementById("heroPhotoInput").addEventListener("change",e=>imageToData(e.target.files[0],src=>{pendingImages.hero=src;setPreview("heroPhotoPreview",src)}));
+document.getElementById("heroPhotoInput").addEventListener("change",e=>
+ imageToData(e.target.files[0],src=>{pendingImages.hero=src;setPreview("heroPhotoPreview",src)})
+);
 function saveHeroSettings(){
  db.heroTitle=document.getElementById("heroTitleInput").value.trim();
  db.heroText=document.getElementById("heroTextInput").value.trim();
  if(pendingImages.hero)db.heroImage=pendingImages.hero;
- pendingImages.hero="";saveDB();applyHero();alert("Pengaturan halaman pembuka tersimpan.");
+ pendingImages.hero="";saveDB();applyHero();
+ alert("Pengaturan halaman pembuka tersimpan.");
 }
 function applyHero(){
  document.querySelector(".hero h1").textContent=db.heroTitle;
  document.querySelector(".hero p").textContent=db.heroText;
- if(db.heroImage)document.getElementById("heroImage").innerHTML=`<img src="${db.heroImage}" alt="Warung sembako">`;
+ if(db.heroImage){
+  document.getElementById("heroImage").innerHTML=`<img src="${db.heroImage}" alt="Warung sembako">`;
+ }else{
+  document.getElementById("heroImage").innerHTML=document.querySelector(".shop-illustration")?.outerHTML||document.getElementById("heroImage").innerHTML;
+ }
 }
+
 function toggleChat(){document.getElementById("chatBox").classList.toggle("hidden")}
 function addMessage(text,who){
  const el=document.createElement("div");el.className="msg "+who;el.textContent=text;
@@ -691,36 +967,55 @@ function addMessage(text,who){
 }
 function walenReply(message){
  const m=message.toLowerCase(),s=activeStore();
- if(/halo|hai|hello|assalam|pagi|siang|sore|malam/.test(m))return "Halo juga, Kak! 😊 Selamat datang. Saya WALEN, siap membantu Kakak berbelanja atau menggunakan aplikasi.";
+ if(/halo|hai|hello|assalam|pagi|siang|sore|malam/.test(m))
+  return "Halo juga, Kak! 😊 Selamat datang. Saya WALEN, siap membantu Kakak berbelanja atau menggunakan aplikasi.";
  if(/harga|berapa|mahal|murah/.test(m)){
-  if(s){const found=s.products.filter(p=>m.includes(p.name.toLowerCase())||p.name.toLowerCase().split(" ").some(w=>w.length>3&&m.includes(w)));
+  if(s){
+   const found=s.products.filter(p=>m.includes(p.name.toLowerCase())||p.name.toLowerCase().split(" ").some(w=>w.length>3&&m.includes(w)));
    if(found.length)return "Ini informasi harga dari "+s.name+":\n"+found.slice(0,5).map(p=>p.name+" — "+money(p.price)+" (stok "+p.stock+")").join("\n")+"\nHarga dapat berubah mengikuti pemilik warung.";
   }
   return "Boleh, Kak. Sebutkan nama produk yang ingin ditanyakan. Saya akan bantu melihat katalog warung yang sedang dipilih.";
  }
  if(/beras|minyak|mie|mi instan|telur|gula|air mineral|galon|gas|rokok|kopi|susu/.test(m)){
-  if(s){const found=s.products.filter(p=>m.split(/\s+/).some(w=>w.length>3&&p.name.toLowerCase().includes(w)));
+  if(s){
+   const found=s.products.filter(p=>m.split(/\s+/).some(w=>w.length>3&&p.name.toLowerCase().includes(w)));
    if(found.length)return "Saya menemukan produk ini di katalog:\n"+found.slice(0,6).map(p=>"• "+p.name+" — "+money(p.price)).join("\n")+"\nSilakan tekan tombol Keranjang pada produk yang diinginkan.";
   }
   return "Silakan buka menu Mulai Belanja dan pilih warung terlebih dahulu, Kak. Nanti saya bantu mencari produk yang tersedia.";
  }
- if(/pesan|beli|checkout|keranjang/.test(m))return "Untuk memesan, pilih produk lalu tekan tombol + Keranjang. Setelah itu buka Keranjang, isi nama, nomor WhatsApp, dan alamat. Pesanan akan diteruskan ke WhatsApp warung.";
- if(/daftar|registrasi|buat akun/.test(m))return "Untuk mendaftarkan warung, tekan tombol Daftar Warung di halaman depan. Isi nama pemilik, nama warung, nomor WhatsApp, alamat, dan akun login.";
- if(/foto|upload|gambar|qris/.test(m))return "Pemilik warung dapat masuk ke Dashboard Pemilik. Di bagian Profil Warung tersedia upload foto warung dan QRIS. Di bagian Produk tersedia upload foto setiap produk.";
- if(/paket|trial|pro|premium|biaya|harga aplikasi/.test(m))return "Paket WALEN: Trial 14 hari, Pro Rp49.000 untuk 30 hari, dan Premium Rp99.000 untuk 30 hari. Aktivasi akan dikelola Admin.";
- if(/admin|pemilik|login|masuk|password|sandi/.test(m))return "Tekan tombol Masuk di bagian atas. Pemilik menggunakan akun saat pendaftaran. Admin masuk dengan akun Admin yang ditentukan pengelola aplikasi.";
- if(/antar|pengiriman|luar kota|ekspedisi|ongkir|kurir/.test(m))return "Untuk pengantaran lokal, tanyakan wilayah layanan kepada warung. Pengiriman luar kota dapat dibicarakan dengan pemilik warung untuk pengecekan stok, biaya kirim, pengemasan, dan nomor resi.";
- if(/terima kasih|makasih|thanks/.test(m))return "Sama-sama, Kak! Senang bisa membantu. Kalau ada yang ingin ditanyakan lagi, panggil saya WALEN ya. 😊";
- if(/bantuan|cara menggunakan|panduan/.test(m))return "Tentu, Kak. Saya bisa membantu cara daftar warung, memilih produk, memasukkan barang ke keranjang, checkout, upload foto, dan informasi paket. Bagian mana yang ingin Kakak pelajari?";
+ if(/pesan|beli|checkout|keranjang/.test(m))
+  return "Untuk memesan, pilih produk lalu tekan tombol + Keranjang. Setelah itu buka Keranjang, isi nama, nomor WhatsApp, alamat dan link Google Maps jika tersedia. Pesanan akan diteruskan ke WhatsApp warung.";
+ if(/daftar|registrasi|buat akun/.test(m))
+  return "Untuk mendaftarkan warung, tekan tombol Daftar Warung di halaman depan. Isi nama pemilik, nama warung, nomor WhatsApp, alamat, dan akun login.";
+ if(/foto|upload|gambar|qris/.test(m))
+  return "Pemilik warung dapat masuk ke Dashboard Pemilik. Di bagian Profil Warung tersedia upload foto warung dan QRIS. Di bagian Produk tersedia upload foto setiap produk.";
+ if(/media sosial|instagram|youtube|tiktok|facebook/.test(m))
+  return "Pemilik warung dapat memasukkan link YouTube, Instagram, TikTok, dan Facebook melalui Dashboard Pemilik > Profil Warung. Setelah disimpan, ikon media sosial yang diisi akan ditampilkan.";
+ if(/paket|trial|pro|premium|biaya|harga aplikasi/.test(m))
+  return "Paket WALEN: Trial 14 hari, Pro Rp49.000 untuk 30 hari, dan Premium Rp99.000 untuk 30 hari. Aktivasi akan dikelola Admin.";
+ if(/admin|pemilik|login|masuk|password|sandi/.test(m))
+  return "Tekan tombol Masuk di bagian atas. Pemilik menggunakan akun saat pendaftaran. Admin dapat masuk melalui tulisan Admin kecil di bagian footer.";
+ if(/antar|pengiriman|luar kota|ekspedisi|ongkir|kurir/.test(m))
+  return "Untuk pengantaran lokal, tanyakan wilayah layanan kepada warung. Pengiriman luar kota dapat dibicarakan dengan pemilik warung untuk pengecekan stok, biaya kirim, pengemasan, dan nomor resi.";
+ if(/terima kasih|makasih|thanks/.test(m))
+  return "Sama-sama, Kak! Senang bisa membantu. Kalau ada yang ingin ditanyakan lagi, panggil saya WALEN ya. 😊";
+ if(/bantuan|cara menggunakan|panduan/.test(m))
+  return "Tentu, Kak. Saya bisa membantu cara daftar warung, memilih produk, memasukkan barang ke keranjang, checkout, upload foto, dan informasi paket. Bagian mana yang ingin Kakak pelajari?";
  return "Baik, Kak. Saya WALEN, pelayan digital warung. Boleh ceritakan lebih jelas apa yang sedang Kakak cari atau butuhkan? Saya akan bantu sebisa mungkin. 😊";
 }
 document.getElementById("chatForm").addEventListener("submit",e=>{
- e.preventDefault();const input=document.getElementById("chatText"),msg=input.value.trim();if(!msg)return;
+ e.preventDefault();
+ const input=document.getElementById("chatText"),msg=input.value.trim();if(!msg)return;
  addMessage(msg,"user");input.value="";
  setTimeout(()=>addMessage(walenReply(msg),"bot"),250);
 });
+
+/* Inisialisasi halaman */
 applyHero();
-if(db.stores.length){selectedStoreId=db.stores.find(s=>s.status==="ON")?.id||""}
+if(db.stores.length){
+ selectedStoreId=db.stores.find(s=>s.status==="ON")?.id||"";
+}
+renderHomeSocial();
 </script>
 </body>
 </html>
