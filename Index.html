@@ -2636,5 +2636,101 @@ Pesan: ${lp.trim()||"-"}`;window.open(`https://wa.me/${o}?text=${encodeURICompon
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if(((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host)||u.protocol==="mailto:"||u.protocol==="tel:"||u.protocol==="sms:"){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+<script>
+(function(){
+  var GS_URL = "https://script.google.com/macros/s/AKfycbz5bks0jxHDRKzXVQeaH4tb0NV3p-kUF2GuH51vmKS5AhVd-zrU6IZICN_07RxD5Vs/exec";
+  var curhatCount = 0;
+  var lastReplies = [];
+  function isCurhat(s){
+    s = String(s||"").toLowerCase();
+    return /(curhat|sedih|capek|galau|stress|stres|pusing|nangis|kesel|bete|bingung|kecewa|cerita|belum mau belanja|bukan mau beli|gak mau beli|tidak mau beli|ngobrol|temenin|dengerin)/.test(s);
+  }
+  function variasi(list){
+    var f = list.filter(function(x){ return lastReplies.slice(-2).indexOf(x)===-1; });
+    var a = f.length ? f : list;
+    var pil = a[Math.floor(Math.random()*a.length)];
+    lastReplies.push(pil);
+    if(lastReplies.length>4) lastReplies.shift();
+    return pil;
+  }
+  function jawabCurhatLokal(){
+    curhatCount++;
+    if(curhatCount===1) return variasi([
+      "Iya, boleh curhat. Walen dengerin. Cerita aja pelan-pelan, gak usah buru-buru. Mau cerita tentang apa?",
+      "Boleh banget, sini cerita aja. Walen dengerin kok. Lagi kenapa?",
+      "Iya, boleh curhat. Walen temenin. Cerita aja pelan-pelan ya."
+    ]);
+    if(curhatCount===2) return variasi([
+      "Walen dengerin kok. Terus gimana? Cerita aja sampai lega.",
+      "Iya, Walen ngerti. Berat ya rasanya. Mau cerita lebih lanjut?",
+      "Makasih udah mau cerita sama Walen. Lanjut aja, Walen masih dengerin."
+    ]);
+    return variasi([
+      "Makasih udah cerita ya. Kalau udah agak enakan, mau Walen temenin liat-liat katalog dulu? Gak usah beli, liat-liat aja.",
+      "Udah lega dikit? Kalau mau, Walen temenin ngobrol lagi atau liat-liat warung dulu, santai aja.",
+      "Walen seneng bisa nemenin. Kalau nanti mau belanja atau mau cerita lagi, Walen di sini aja ya."
+    ]);
+  }
+  async function tanyaGS(pesan){
+    try{
+      var r = await fetch(GS_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pesan:pesan,id_warung:"warungdaus",riwayat:[]})});
+      var d = await r.json().catch(function(){return null;});
+      var j = d && (d.jawaban||d.answer||"");
+      j = String(j||"").trim();
+      return j ? j : null;
+    }catch(e){ return null; }
+  }
+  function perbaikiPesanWalen(){
+    var els = document.querySelectorAll("*");
+    for(var i=els.length-1;i>=0;i--){
+      var el = els[i];
+      if(!el || el.children.length>0) continue;
+      var teks = (el.textContent||"").trim();
+      if(teks.indexOf("Silakan lihat gambarnya di katalog dulu ya")!==-1 && teks.length<300){
+        var bodyText = document.body.innerText||"";
+        var lastCurhat = isCurhat(bodyText.slice(-500));
+        if(lastCurhat || curhatCount>0){
+          el.textContent = jawabCurhatLokal();
+        } else {
+          el.textContent = el.textContent.replace("Silakan lihat gambarnya di katalog dulu ya", variasi([
+            "mau cerita lagi, atau mau liat-liat warung dulu?",
+            "Walen di sini aja kok. Mau ngobrol dulu atau mau cari sesuatu di warung?",
+            "cerita aja dulu, kalau mau belanja nanti Walen bantuin."
+          ]));
+        }
+        break;
+      }
+    }
+  }
+  var terakhir = "";
+  setInterval(function(){
+    var bodyText = document.body ? (document.body.innerText||"") : "";
+    var lines = bodyText.split("\n").filter(function(x){return x.trim()!=="";});
+    var last = lines[lines.length-1]||"";
+    if(last!==terakhir){
+      terakhir = last;
+      if(isCurhat(last)){
+        tanyaGS(last).then(function(jwb){
+          if(jwb){
+            setTimeout(function(){
+              var els = document.querySelectorAll("*");
+              for(var i=els.length-1;i>=0;i--){
+                var el = els[i];
+                if(!el || el.children.length>0) continue;
+                var teks = (el.textContent||"").trim();
+                if(teks.indexOf("Silakan lihat gambarnya di katalog dulu ya")!==-1){
+                  el.textContent = jwb;
+                  break;
+                }
+              }
+            }, 500);
+          }
+        });
+      }
+      setTimeout(perbaikiPesanWalen, 800);
+    }
+  }, 1000);
+})();
+</script>
 </html>
 
