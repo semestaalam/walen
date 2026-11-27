@@ -2640,10 +2640,11 @@ Pesan: ${lp.trim()||"-"}`;window.open(`https://wa.me/${o}?text=${encodeURICompon
 (function(){
   var GS_URL = "https://script.google.com/macros/s/AKfycbz5bks0jxHDRKzXVQeaH4tb0NV3p-kUF2GuH51vmKS5AhVd-zrU6IZICN_07RxD5Vs/exec";
   var curhatCount = 0;
+  var lastUserMsg = "";
   var lastReplies = [];
   function isCurhat(s){
     s = String(s||"").toLowerCase();
-    return /(curhat|sedih|capek|galau|stress|stres|pusing|nangis|kesel|bete|bingung|kecewa|cerita|belum mau belanja|bukan mau beli|gak mau beli|tidak mau beli|ngobrol|temenin|dengerin)/.test(s);
+    return /(curhat|sedih|capek|galau|stress|stres|pusing|nangis|kesel|bete|bingung|kecewa|cerita|belum mau belanja|bukan mau beli|gak mau beli|tidak mau beli|bukan mau belanja|mau curhat dulu|ngobrol|temenin|dengerin)/.test(s);
   }
   function variasi(list){
     var f = list.filter(function(x){ return lastReplies.slice(-2).indexOf(x)===-1; });
@@ -2653,7 +2654,7 @@ Pesan: ${lp.trim()||"-"}`;window.open(`https://wa.me/${o}?text=${encodeURICompon
     if(lastReplies.length>4) lastReplies.shift();
     return pil;
   }
-  function jawabCurhatLokal(){
+  function jawabCurhat(){
     curhatCount++;
     if(curhatCount===1) return variasi([
       "Iya, boleh curhat. Walen dengerin. Cerita aja pelan-pelan, gak usah buru-buru. Mau cerita tentang apa?",
@@ -2680,56 +2681,51 @@ Pesan: ${lp.trim()||"-"}`;window.open(`https://wa.me/${o}?text=${encodeURICompon
       return j ? j : null;
     }catch(e){ return null; }
   }
-  function perbaikiPesanWalen(){
-    var els = document.querySelectorAll("*");
-    for(var i=els.length-1;i>=0;i--){
-      var el = els[i];
-      if(!el || el.children.length>0) continue;
-      var teks = (el.textContent||"").trim();
-      if(teks.indexOf("Silakan lihat gambarnya di katalog dulu ya")!==-1 && teks.length<300){
-        var bodyText = document.body.innerText||"";
-        var lastCurhat = isCurhat(bodyText.slice(-500));
-        if(lastCurhat || curhatCount>0){
-          el.textContent = jawabCurhatLokal();
-        } else {
-          el.textContent = el.textContent.replace("Silakan lihat gambarnya di katalog dulu ya", variasi([
-            "mau cerita lagi, atau mau liat-liat warung dulu?",
-            "Walen di sini aja kok. Mau ngobrol dulu atau mau cari sesuatu di warung?",
-            "cerita aja dulu, kalau mau belanja nanti Walen bantuin."
-          ]));
-        }
-        break;
-      }
+  // Tangkap pesan pembeli pas klik Kirim / tekan Enter
+  document.addEventListener("click", function(e){
+    var t = e.target;
+    if(t && /kirim|send|➤|▶|chat/i.test((t.textContent||"")+" "+(t.className||""))){
+      setTimeout(function(){
+        var inputs = document.querySelectorAll("input, textarea");
+        for(var i=0;i<inputs.length;i++){ if(inputs[i].value) lastUserMsg = inputs[i].value; }
+      }, 100);
     }
-  }
-  var terakhir = "";
+  }, true);
+  document.addEventListener("keydown", function(e){
+    if(e.key==="Enter"){
+      var a = document.activeElement;
+      if(a && (a.tagName==="INPUT"||a.tagName==="TEXTAREA")) lastUserMsg = a.value||"";
+    }
+  }, true);
+  // Cek tiap 600ms, ganti jawaban kaku yang muncul setelah curhat
   setInterval(function(){
-    var bodyText = document.body ? (document.body.innerText||"") : "";
-    var lines = bodyText.split("\n").filter(function(x){return x.trim()!=="";});
-    var last = lines[lines.length-1]||"";
-    if(last!==terakhir){
-      terakhir = last;
-      if(isCurhat(last)){
-        tanyaGS(last).then(function(jwb){
-          if(jwb){
-            setTimeout(function(){
-              var els = document.querySelectorAll("*");
-              for(var i=els.length-1;i>=0;i--){
-                var el = els[i];
-                if(!el || el.children.length>0) continue;
-                var teks = (el.textContent||"").trim();
-                if(teks.indexOf("Silakan lihat gambarnya di katalog dulu ya")!==-1){
-                  el.textContent = jwb;
-                  break;
-                }
-              }
-            }, 500);
-          }
+    var all = document.querySelectorAll("div, p, span");
+    for(var i=0;i<all.length;i++){
+      var el = all[i];
+      if(!el) continue;
+      var teks = (el.textContent||"").trim();
+      // Kena 2 kalimat kaku: yang curhat + yang katalog
+      var isKaku = teks.indexOf("Coba ceritakan mau cari produk apa")!==-1 || teks.indexOf("Silakan lihat gambarnya di katalog dulu ya")!==-1;
+      if(!isKaku) continue;
+      if(teks.length>400) continue;
+      // Cek apakah pembeli terakhir curhat: dari input terakhir ATAU dari teks halaman
+      var bodyText = (document.body.innerText||"").toLowerCase();
+      var curhat = isCurhat(lastUserMsg) || bodyText.slice(-1200).indexOf("curhat")!==-1 || bodyText.slice(-1200).indexOf("bukan mau belanja")!==-1 || bodyText.slice(-1200).indexOf("mau curhat dulu")!==-1;
+      if(curhat){
+        // Kalau ini jawaban untuk curhat, ganti jadi jawaban curhat
+        // Simpan dulu biar nggak diganti berkali-kali
+        if(el.getAttribute("data-walen-fixed")==="1") continue;
+        el.setAttribute("data-walen-fixed","1");
+        var lokal = jawabCurhat();
+        el.textContent = lokal;
+        // Tanya GS juga, kalau GS jawab lebih bagus, ganti lagi
+        var pesanCurhat = lastUserMsg || "saya mau curhat";
+        tanyaGS(pesanCurhat).then(function(jwb){
+          if(jwb && jwb.length>5) el.textContent = jwb;
         });
       }
-      setTimeout(perbaikiPesanWalen, 800);
     }
-  }, 1000);
+  }, 600);
 })();
 </script>
 </html>
